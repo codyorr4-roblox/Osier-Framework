@@ -42,7 +42,7 @@ end)
 
 ```
 
-# initiating the Client
+# Initiating the Client
 ## Add a LocalScript into the "Client" Module (or anywhere you want really)
 ## The "Client" Module will be cloned into the Player when they join.
 
