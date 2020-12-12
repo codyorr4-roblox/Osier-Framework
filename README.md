@@ -2,16 +2,16 @@
 A very slim framework used to simplify Initiation, Datastores and Remotes.
 
 # Pros
-Player Data, Loading, Caching, Autosaving and Data Replication are all handled automatically, just provide Default Data.
-Doesn't use a network request everytime you want to get or set a value from datastores. (because it caches the data)
-Easily reset everyones data or add/remove values from players datastores.
-Remotes are way more convenient to use and have a faster workflow.
-Dont have to depend on :WaitForChild() or :Wait() for important things. (because everything is initiated in a specific order)
+*Player Data, Loading, Caching, Autosaving and Data Replication are all handled automatically, just provide Default Data.
+*Doesn't use a network request everytime you want to get or set a value from datastores. (because it caches the data)
+*Easily reset everyones data or add/remove values from players datastores.
+*Remotes are way more convenient to use and have a faster workflow.
+*Dont have to depend on :WaitForChild() or :Wait() for important things. (because everything is initiated in a specific order)
 
 # Cons
-Have to learn how to use the provided properties/functions
-Have to understand the workflow of libraries/packages to get a decent design going. (especially when initiating things)
-
+*Have to learn how to use the provided properties/functions
+*Have to understand the workflow of libraries/packages to get a decent design going. (especially when initiating things)
+*Possible to get Cyclic Table issues using inproper designs.
 
 
 # Initiating the server
@@ -39,11 +39,9 @@ local cooldown = 1 -- in seconds
 
 server:HandleRequest("TestRequest123", cooldown, function(player, data)
     print(data.Message)
-    
     server:SetValue(player, "Coins", function(oldValue)
         return oldValue + 100
     end)
-    
     return "Hello client"
 end)
 
@@ -52,7 +50,7 @@ end)
 
 # intiate the Client
 ## Add a LocalScript into the "Client" Module (or anywhere you want really)
-## the Client module will be cloned into the Player when they join.
+## The "Client" Module will be cloned into the Player when they join.
 
 ```lua
 -- require and initiate
@@ -73,7 +71,6 @@ coins.Changed:Connect(function()
     print("Coins updated to: " .. coins.Value)
 end)
 
---
 
 
 
