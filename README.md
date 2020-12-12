@@ -57,7 +57,7 @@ local coins = data.Coins
 print(coins.Value)
 
 --use request (must be handled by the server first)
-local reply = client:Request("TestRequest123", {Message = "Hello server"}
+local reply = client:Request("TestRequest123", {Message = "Hello server"})
 print(reply)
 
 -- print value everytime it changes.
