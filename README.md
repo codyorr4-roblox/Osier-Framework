@@ -22,7 +22,7 @@ local server = require(script.Parent)
 local defaultData = {
     Coins = 0
 }
--- starts the remote listener, and datastore handler, just provide default player data for the datastore.
+-- starts the remote handler and datastore handler, you just have to provide default player data for the datastore.
 server:Init(defaultData)
 
 -- use the provided PlayerAdded event to properly wait for datastore/remote handler to initiate.
@@ -52,17 +52,19 @@ local client = require(script.Parent)
 client:Init()
 
 --grab local data. (this is the data that the server grabbed from the datastore and then replicated to the client)
-local data = client.Data
-local coins = data:WaitForChild("Coins")
-print(coins.Value
+local data = client:WaitForData()
+local coins = data.Coins
+print(coins.Value)
 
 --use request (must be handled by the server first)
 local reply = client:Request("TestRequest123", {Message = "Hello server"}
 print(reply)
 
 -- print value everytime it changes.
-coins.Changed:Connect(function()
-    print("Coins updated to: " .. coins.Value)
+client.DataChanged:Connect(function(data)
+    if(data.Coins)then
+        print("Coins updated to: " .. data.Coins)
+    end
 end)
 
 
