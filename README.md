@@ -60,7 +60,7 @@ print(coins.Value)
 local reply = client:Request("TestRequest123", {Message = "Hello server"})
 print(reply)
 
--- print value everytime it changes.
+-- print value everytime its changed by the server.
 client.DataChanged:Connect(function(data)
     if(data.Coins)then
         print("Coins updated to: " .. data.Coins)
