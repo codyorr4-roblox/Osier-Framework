@@ -9,7 +9,7 @@ A very compact module used to simplify Initiation, Datastores and Remotes.
 
 
 # Initiating the server
-## Add a Server script any where you want
+## Add a Server script any where you need
 
 ```lua
 local server = require(game.ReplicatedStorage.Slim)
