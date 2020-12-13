@@ -51,13 +51,6 @@ client:WaitForServer()
 -- fire a remote event. (must be handled on the server first)
 client:Fire("ExampleEvent")
 
-
-
-
-
-
-
-
 ```
 
 
