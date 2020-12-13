@@ -159,6 +159,7 @@ if(rs:IsServer())then
 	function server:Init(newDefaultData)
 		if(initiated)then return end
 		initiated=true
+		
 		defaultData=newDefaultData
 		startAutosaving()
 		
@@ -170,6 +171,12 @@ if(rs:IsServer())then
 		players.PlayerAdded:Connect(function(player)
 			load(player)
 			startListening(player)
+			server:WaitForClient(player)
+			local dataReady = false
+			repeat
+				rs.Stepped:Wait()
+				dataReady = server:Request(player, "_SlimDataReplicate", server:GetData(player))
+			until dataReady == true
 			readyPlayers[player.Name]=true
 		end)
 
@@ -212,9 +219,9 @@ if(rs:IsServer())then
 	]]
 	function server:WaitForClient(player)
 		local id = "Slim-"..player.UserId
-		repeat rs.Stepped:Wait() until sessionData[id]~=nil
-		local id = "Slim-"..player.UserId
-		repeat rs.Stepped:Wait() until eventCooldowns[id] ~= nil and requestCooldowns[id] ~= nil
+		local event = player:FindFirstChild("SlimEvent")
+		local request = player:FindFirstChild("SlimRequest")
+		repeat rs.Stepped:Wait() until event~=nil and request~=nil and eventCooldowns[id]~=nil and requestCooldowns[id]~=nil and sessionData[id]~=nil
 		return true
 	end
 
@@ -297,7 +304,19 @@ if(rs:IsServer())then
 	function server:SetValue(player, name, value)
 		local id = "Slim-"..player.UserId
 		local oldValue = sessionData[id][name]
-		sessionData[id][name] = type(value) == "function" and value(oldValue) or value
+		value =  type(value) == "function" and value(oldValue) or value
+		sessionData[id][name] = value
+		
+		coroutine.wrap(function()
+			server:Request("_SlimDataReplicate", {[""..name] = value})
+			local leaderstats = player:FindFirstChild("leaderstats")
+			if(leaderstats)then
+				local valueInstance = leaderstats:FindFirstChild(name)
+				if(valueInstance)then
+					valueInstance.Value = value
+				end
+			end
+		end)()
 	end
 
 
@@ -365,11 +384,13 @@ elseif(rs:IsClient())then
 	
 	local rs = game:GetService("RunService")
 	
+	local initiated=false
 	local player = game.Players.LocalPlayer
 	local events = {}
 	local requests = {}
 	local eventCooldowns = {}
 	local requestCooldowns = {}
+	local data
 	local slimEvent = player:WaitForChild("SlimEvent")
 	local slimRequest = player:WaitForChild("SlimRequest")
 
@@ -402,12 +423,32 @@ elseif(rs:IsClient())then
 			return value
 		end
 	end
-
+	
+	
+	
+	
+	
 	--[[
 	   Client Initiation
 	]]
 	function client:Init()
+		if(initiated)then return end
+		initiated=true
+		
 		startListening()
+		
+		--data replication
+		client:HandleRequest("_SlimDataReplicate", 0.1, function(replicatedData)
+			if(not data)then
+				data = replicatedData
+			else
+				for i, v in pairs(replicatedData)do
+					data[i]=v
+				end
+			end
+			return true
+		end)
+		
 		return self
 	end
 	
@@ -422,22 +463,36 @@ elseif(rs:IsClient())then
 			local s,e = pcall(function()
 				ready = client:Request("_RequestReadiness")
 			end)
-		until ready == true
+		until ready == true and data~=nil
 		return ready
 	end
-
+	
+	
+	
+	
+	--[[
+	   Replicated Data function
+	]]
+	function client:GetData()
+		return data
+	end
+	
+	function client:GetValue(name)
+		return data[name]
+	end
+	
+	
+	
 
 	--[[
 	   Remote functions
 	]]
 	function client:HandleEvent(name, cooldown, f)
-		events[name]={Cooldown = cooldown}
-		events[name].Handle = f
+		events[name]={Cooldown = cooldown, Handle = f}
 	end
 
 	function client:HandleRequest(name, cooldown, f)
-		requests[name]={Cooldown = cooldown}
-		requests[name].Handle = f
+		requests[name]={Cooldown = cooldown, Handle = f}
 	end
 
 	function client:Fire(name, data)
