@@ -36,8 +36,7 @@ end)
 ```
 
 # Initiating the Client
-## Add a LocalScript into the "Client" Module (or anywhere you want really)
-## The "Client" Module will be cloned into the Player when they join.
+## Add a Local Script anywhere you need.
 
 ```lua
 -- require and initiate
