@@ -63,7 +63,7 @@ client:Init()
 client:WaitForServer()
 
 -- grabs the data that was replicated from the server.
-local data = client:GetData() 
+local data = client.Data
 
 print(data.Coins)
 
