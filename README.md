@@ -45,7 +45,7 @@ local client = require(game.ReplicatedStorage:WaitForChild("Slim"))
 -- starts the local remote handler / data receiver
 client:Init()
 
--- wait for the players data / remote handler / server data
+-- wait for the players replicated data, remote handler and server.
 client:WaitForServer()
 
 -- fire a remote event. (must be handled on the server first)
