@@ -6,7 +6,7 @@ A very compact module used to simplify Initiation, Datastores and Remotes.
 ## Datastores utilities
 * Player Data Loading, Caching and Autosaving are handled automatically, you just provde Default Data for new players
 * Player Data is replicated automatically to the client.
-* SessionLocking is implemented
+* SessionLocking is implemented and data cannot be overriden with old data and exploiters can't duplicate data.
 * Slim doesn't use a network request everytime you want to get/update a value from datastores. (because it caches the players data)
 * Easily reset data, add data or remove data using a reconcile method.
 * Easily add CORE leaderstats that automatically update when you update players data.
