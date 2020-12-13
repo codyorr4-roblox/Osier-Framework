@@ -2,7 +2,7 @@
 A very compact module used to simplify Initiation, Datastores and Remotes.
 
 # Pros
-* Player Data, Loading, Caching, Autosaving and Data Replication are all handled automatically, just provide Default Data.
+* Player Data, Loading, Caching, Autosaving, Data Replication, SessionLock, Leaderboards, and Backups are all handled automatically, just provide Default Data.
 * Doesn't use a network request everytime you want to get or set a value from datastores. (because it caches the data)
 * Easily reset everyones data, add data or remove data values using a reconcile method.
 * Remotes are way more convenient to use and have a faster workflow.
