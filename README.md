@@ -50,8 +50,15 @@ client:Init()
 -- wait for the players replicated data, remote handler and server.
 client:WaitForServer()
 
+-- grabs the data that was replicated from the server.
+local data = client:GetData() 
+
+print(data.Coins)
+
 -- fire a remote event. (must be handled on the server first)
 client:Fire("ExampleEvent")
+
+
 
 ```
 
