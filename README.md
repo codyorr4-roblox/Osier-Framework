@@ -1,11 +1,23 @@
-# Slim-Service for roblox
+# SlimService for roblox
 A very compact module used to simplify Initiation, Datastores and Remotes.
 
 # Why use slim?
-* Player Data, Loading, Caching, Autosaving, Data Replication, SessionLock, Leaderboards, and Backups are all handled automatically, just provide Default Data.
-* Doesn't use a network request everytime you want to get or set a value from datastores. (because it caches the data)
-* Easily reset everyones data, add data or remove data values using a reconcile method.
-* Remotes are way more convenient to use and have a faster workflow.
+
+## Datastores utilities
+* Player Data Loading, Caching and Autosaving are handled automatically, you just provde Default Data for new players
+* Player Data is replicated automatically to the client.
+* SessionLocking is implemented
+* Slim doesn't use a network request everytime you want to get/update a value from datastores. (because it caches the players data)
+* Easily reset data, add data or remove data using a reconcile method.
+* Easily add CORE leaderstats that automatically update when you update players data.
+* Easily add CUSTOM leaderbards that automatically update when you update players data.
+
+## remote utilities
+* Remote are way more convenient to use and have a faster workflow.
+* Never have to worry about type errors
+* Never have to worry about exploiters breaking your remotes/server.
+* Never have to worry about adding debounces/cooldowns to every single remote.
+  just provide the cooldown argument in HandleEvent() and HandleRequest() function. (compatible with milliseconds)
 
 
 # Initiating the server
