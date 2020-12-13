@@ -20,8 +20,10 @@ server:Init(defaultData)
 
 -- fires when a player joins
 game.Players.PlayerAdded:Connect(function(player)
-    -- waits for the players data, remote handler and client to be initiated.
+    -- wait for the players data, remote handler and client to be initiated.
     server:WaitForClient(player)
+    
+    -- grab the players 'coins' value.
     local coins = server:GetValue(player, "Coins")
     print(coins)
 end)
