@@ -1,4 +1,4 @@
-# Slim-Module for roblox
+# Slim-Service for roblox
 A very compact module used to simplify Initiation, Datastores and Remotes.
 
 # Why use slim?
