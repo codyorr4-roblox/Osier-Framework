@@ -380,7 +380,7 @@ if(rs:IsServer())then
 
 
 elseif(rs:IsClient())then	
-	local client = {}
+	local client = {Data={}}
 	
 	local rs = game:GetService("RunService")
 	
@@ -390,7 +390,6 @@ elseif(rs:IsClient())then
 	local requests = {}
 	local eventCooldowns = {}
 	local requestCooldowns = {}
-	local data
 	local slimEvent = player:WaitForChild("SlimEvent")
 	local slimRequest = player:WaitForChild("SlimRequest")
 
@@ -439,11 +438,11 @@ elseif(rs:IsClient())then
 		
 		--data replication
 		client:HandleRequest("_SlimDataReplicate", 0.1, function(replicatedData)
-			if(not data)then
+			if(not client.Data)then
 				data = replicatedData
 			else
 				for i, v in pairs(replicatedData)do
-					data[i]=v
+					client.Data[i]=v
 				end
 			end
 			return true
@@ -463,7 +462,7 @@ elseif(rs:IsClient())then
 			local s,e = pcall(function()
 				ready = client:Request("_RequestReadiness")
 			end)
-		until ready == true and data~=nil
+		until ready == true and client.Data~=nil
 		return ready
 	end
 	
@@ -471,14 +470,14 @@ elseif(rs:IsClient())then
 	
 	
 	--[[
-	   Replicated Data function
+	   Replicated Data functions
 	]]
 	function client:GetData()
-		return data
+		return client.Data
 	end
 	
 	function client:GetValue(name)
-		return data[name]
+		return client.Data[name]
 	end
 	
 	
