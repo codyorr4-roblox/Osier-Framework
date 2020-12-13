@@ -13,7 +13,7 @@ A very compact module used to simplify Initiation, Datastores and Remotes.
 * Easily add CUSTOM leaderbards that automatically update when you update players data.
 
 ## Remote utilities
-* Remote are way more convenient to use and have a faster workflow.
+* Remotes are way more convenient to use and have a faster workflow.
 * Never have to worry about type errors
 * Never have to worry about exploiters breaking your remotes/server.
 * Never have to worry about adding debounces/cooldowns to every single remote.
