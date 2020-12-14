@@ -6,11 +6,11 @@ A very compact module used to simplify Initiation, Datastores and Remotes.
 ## Datastores utilities
 * Player Data Loading, Caching and Autosaving are handled automatically, you just provde Default Data for new players
 * Player Data is replicated automatically to the client.
-* SessionLocking is implemented and data cannot be overriden with old data and exploiters can't duplicate data.
+* SessionLocking is implemented and data cannot be overriden with old data and exploiters can't duplicate data. **[unfinished]**
 * Slim doesn't use a network request everytime you want to get/update a value from datastores. (because it caches the players data)
 * Easily reset data, add data or remove data using a reconcile method.
 * Easily add CORE leaderstats that automatically update when you update players data.
-* Easily add CUSTOM leaderbards that automatically update when you update players data.
+* Easily add CUSTOM leaderboards that automatically update when you update players data. **[unfinished]**
 
 ## Remote utilities
 * Remotes are way more convenient to use and have a faster workflow.
@@ -21,58 +21,15 @@ A very compact module used to simplify Initiation, Datastores and Remotes.
 
 
 # Initiating the server
-## Add a Server script any where you need
+## Add a Server script into the _Server Module_
 
 ```lua
-local server = require(game.ReplicatedStorage.Slim)
-
--- initiate the server and provide some default data for new players. (all loading/autosaving/caching/replication/remote handlers will be started automatically)
-local defaultData = { Coins = 0 }
-server:Init(defaultData)
-
--- fires when a player joins
-game.Players.PlayerAdded:Connect(function(player)
-    -- wait for the players data, remote handler and client to be initiated.
-    server:WaitForClient(player)
-    
-    -- grab the players 'coins' value.
-    local coins = server:GetValue(player, "Coins")
-    print(coins)
-end)
-
--- handle an event with a specified cooldown 
-server:HandleEvent("ExampleEvent", 0.5, function(player,data)
-    server:SetValue(player, "Coins", function(old)
-        return old+100
-    end)
-end)
 
 ```
 
 # Initiating the Client
-## Add a Local Script anywhere you need.
+## Add a Local Script into the _Client Module_
 
 ```lua
--- require and initiate
-local client = require(game.ReplicatedStorage:WaitForChild("Slim"))
-
--- starts the local remote handler / data receiver
-client:Init()
-
--- wait for the players replicated data, remote handler and server.
-client:WaitForServer()
-
--- grabs the data that was replicated from the server.
-local data = client.Data
-
-print(data.Coins)
-
--- fire a remote event. (must be handled on the server first)
-client:Fire("ExampleEvent")
-
-
 
 ```
-
-
-
