@@ -3,7 +3,7 @@ A very compact module used to simplify Initiation, Datastores and Remotes.
 
 # Why use slim?
 
-## Datastores utilities
+## Datastores
 * Player Data Loading, Caching and Autosaving are handled automatically, you just provde Default Data for new players
 * Player Data is replicated automatically to the client.
 * SessionLocking is implemented and data cannot be overriden with old data and exploiters can't duplicate data. **[unfinished]**
@@ -12,7 +12,7 @@ A very compact module used to simplify Initiation, Datastores and Remotes.
 * Easily add CORE leaderstats that automatically update when you update players data.
 * Easily add CUSTOM leaderboards that automatically update when you update players data. **[unfinished]**
 
-## Remote utilities
+## Remotes
 * Remotes are way more convenient to use and have a faster workflow.
 * Never have to worry about type errors
 * Never have to worry about exploiters breaking your remotes/server.
@@ -24,6 +24,7 @@ A very compact module used to simplify Initiation, Datastores and Remotes.
 
 # Getting Started
 
+***
 ## Initiating the server
 ### Add a Server script into the _Server Module_
 
@@ -31,8 +32,8 @@ A very compact module used to simplify Initiation, Datastores and Remotes.
 
 ```
 
-# Initiating the Client
-## Add a Local Script into the _Client Module_
+## Initiating the Client
+### Add a Local Script into the _Client Module_
 
 ```lua
 
