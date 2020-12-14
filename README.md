@@ -5,20 +5,26 @@ _Dont forget to report bugs or to provide feedback if something makes you cringe
 
 # Why use the lanky framework?
 
-## Datastores
-* Player Data Loading, Caching and Autosaving are handled automatically, you just provde Default Data for new players
+## Open source and flexible
+* Server/Client modules are provided to aid readability, usability and to fine tune the initiation order.
+* Developers can easily add extra functionality to the Server/Client modules without effecting the internal modules.
+* Advanced Developers can use the internal modules to aid the development of their very own frameworks.
+* Compatible with every type of game
+
+## Datastore handling
+* Player Data Loading, Caching and Autosaving are handled automatically, you just provide Default Data for new players
 * Player Data is replicated automatically to the client.
 * SessionLocking is implemented and data cannot be overriden with old data and exploiters can't duplicate data. **[unfinished]**
+* Optimized Backups
 * Lanky doesn't use a network request everytime you want to get/update a value from datastores. (because it caches the players data)
 * Reset data, add data or remove data. (Default data and players data will be reconciled upon joining)
-* Easily add CORE leaderstats and CUSTOM leaderboards that automatically update when you change players data.
+* Add CORE leaderstats and CUSTOM leaderboards that automatically update when you change players data. **[unfinished]**
 
-## Remotes
+## Remote handling
 * Remotes are way more convenient to use and have a faster workflow.
 * Never have to worry about type errors
 * Never have to worry about exploiters breaking your remotes/server.
 * Never have to worry about adding debounces/cooldowns to every single remote.
-just provide the cooldown argument in HandleEvent() and HandleRequest() function. (compatible with milliseconds)
 
 ***
 
@@ -26,14 +32,14 @@ just provide the cooldown argument in HandleEvent() and HandleRequest() function
 
 
 ## Initiating the server
-### Add a Server script into the _Server Module_
+### Add a Server script into the _Server Module_ (or anywhere really)
 
 ```lua
 
 ```
 
 ## Initiating the Client
-### Add a Local Script into the _Client Module_
+### Add a Local Script into the _Client Module_ (or anywhere really)
 
 ```lua
 
