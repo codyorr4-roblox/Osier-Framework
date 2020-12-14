@@ -1,6 +1,8 @@
 # Lanky-Framework for roblox
 A very slim framework used to simplify Initiation, Datastores and Remotes.
 
+_Dont forget to report bugs or to provide feedback if something makes you cringe__
+
 # Why use the lanky framework?
 
 ## Datastores
@@ -8,9 +10,8 @@ A very slim framework used to simplify Initiation, Datastores and Remotes.
 * Player Data is replicated automatically to the client.
 * SessionLocking is implemented and data cannot be overriden with old data and exploiters can't duplicate data. **[unfinished]**
 * Lanky doesn't use a network request everytime you want to get/update a value from datastores. (because it caches the players data)
-* Easily reset data, add data or remove data using a reconcile method.
-* Easily add CORE leaderstats that automatically update when you update players data.
-* Easily add CUSTOM leaderboards that automatically update when you update players data. **[unfinished]**
+* Reset data, add data or remove data. (Default data and players data will be reconciled upon joining)
+* Easily add CORE leaderstats and CUSTOM leaderboards that automatically update when you change players data.
 
 ## Remotes
 * Remotes are way more convenient to use and have a faster workflow.
