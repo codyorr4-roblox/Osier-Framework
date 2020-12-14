@@ -20,8 +20,12 @@ A very compact module used to simplify Initiation, Datastores and Remotes.
   just provide the cooldown argument in HandleEvent() and HandleRequest() function. (compatible with milliseconds)
 
 
-# Initiating the server
-## Add a Server script into the _Server Module_
+***
+
+# Getting Started
+
+## Initiating the server
+### Add a Server script into the _Server Module_
 
 ```lua
 
