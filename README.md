@@ -24,7 +24,6 @@ A very compact module used to simplify Initiation, Datastores and Remotes.
 
 # Getting Started
 
-***
 ## Initiating the server
 ### Add a Server script into the _Server Module_
 
