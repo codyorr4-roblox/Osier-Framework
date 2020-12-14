@@ -1,7 +1,7 @@
 # Lanky-Framework for roblox
 A very slim framework used to simplify Initiation, Datastores and Remotes.
 
-_Dont forget to report bugs or to provide feedback if something makes you cringe__
+_Dont forget to report bugs or to provide feedback if something makes you cringe_
 
 # Why use the lanky framework?
 
