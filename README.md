@@ -1,4 +1,4 @@
-# Osier-Framework for roblox
+# Osier-Framework
 A very small framework used to simplify Initiation, Datastores and Remotes.
 
 _dont forget to report bugs or to provide feedback_
