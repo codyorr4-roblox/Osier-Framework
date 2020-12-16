@@ -66,6 +66,7 @@ server:WaitForStart()
 
 -- do what you gotta do after server starts
 server:HandleEvent("Sell", 1, function(player, data)
+    -- update the players 'Coins' value. it'll be autosaved. (it'll also save when they leave or if the server closes)
     server:UpdateValue(player, "Coins", function(oldValue)
     	return oldValue+100
     end)
