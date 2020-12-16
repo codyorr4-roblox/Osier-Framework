@@ -55,7 +55,7 @@ server:Start({
 ```
 
 ## Using the Server
-### Add a separate Server Script as a child of the _Server Module_ (or anywhere really)
+### Add another Server Script as a child of the _Server Module_ (or anywhere really)
 
 ```lua
 -- require the Server module.
