@@ -35,14 +35,17 @@ local server = require(script.Parent)
 
 -- connect to the custom player added event (or utilize :WaitForClient(player) in the normal player added event)
 server.PlayerAdded:Connect(function(player,data)
+	-- print the players 'Coins' value
 	print("Server Coins: "..server:GetValue(player,"Coins"))
+	
+	-- fire a remote event handled by the players client.
 	server:Fire(player, "LocalTest")
 end)
 
 
 -- handle a remote event on the server
 server:HandleEvent("Test", 0 , function(player, data)
-	print("TEST EVENT FIRED")
+	print("SERVER TEST EVENT FIRED")
 end)
 
 -- start the server and provide DefaultData for the players datastores.
