@@ -27,7 +27,7 @@ _dont forget to report bugs or to provide feedback_
 
 
 ## Initiating the server
-### Add a Server script into the _Server Module_ (or anywhere really)
+### Add a Server Script into the _Server Module_ (or anywhere really)
 
 ```lua
 -- require the Server module.
