@@ -93,4 +93,9 @@ client:Fire("Test")
 client:HandleEvent("LocalTest", 0,function(data)
     print("LOCAL TEST EVENT FIRED")
 end)
+
+-- check to see if certain data changes
+client.DataChanged("Coins"):Connect(function(value)
+    print("LOCAL COINS CHANGED TO: "..value
+end)
 ```
