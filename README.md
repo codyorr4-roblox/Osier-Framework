@@ -3,7 +3,7 @@ A very small framework used to simplify Initiation, Datastores and Remotes.
 
 _dont forget to report bugs or to provide feedback_
 
-# Why use the lanky framework?
+# Why use the osier framework?
 
 ## Open source and flexible
 * Osier is practically a base for your very own framework
@@ -15,7 +15,7 @@ _dont forget to report bugs or to provide feedback_
 * Player Data is replicated automatically to the client.
 * Session Locking is implemented.
 * Optimized Backups **[unfinished]**
-* Osier doesn't use network request everytime you want to get/update a value from datastores. (because it caches the players data)
+* Osier doesn't use network request everytime you want to get/update a value from datastores. (because it caches the players data when they join)
 * Reset data, add data or remove data easily. (Default data and players data will be reconciled upon joining)
 * Add core leaderstats and/or custom leaderboards that automatically update when you change players data. **[unfinished]**
 * Remotes are more convenient to setup and faster to use.
