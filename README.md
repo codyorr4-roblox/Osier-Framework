@@ -5,12 +5,12 @@ _dont forget to report bugs or to provide feedback_
 
 # Why use the osier framework?
 
-## Open source and flexible
-* Osier is practically a base for your very own framework
+## Open-source and flexible
+* Osier is practically a blank framework that can be used for your very own framework
 * Developers can easily add extra functionality.
 * Compatible with every type of game
 
-## Automatic loading/saving and Remote utilities
+## Automatic loading/saving + Remote utilities
 * Player Data Loading, Caching and Autosaving are handled automatically, you just provide Default Data for new players
 * Player Data is replicated automatically to the client.
 * Session Locking is implemented.
@@ -54,8 +54,8 @@ server:Start({
 })
 ```
 
-## using the Server
-### Add a Server Script into the _Server Module_ (or anywhere really)
+## Using the Server
+### Add a separate Server Script into the _Server Module_ (or anywhere really)
 
 ```lua
 -- require the Server module.
