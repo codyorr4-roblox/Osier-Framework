@@ -96,6 +96,6 @@ end)
 
 -- check to see if certain data changes
 client.DataChanged("Coins"):Connect(function(value)
-    print("LOCAL COINS CHANGED TO: "..value
+    print("LOCAL COINS CHANGED TO: "..value)
 end)
 ```
