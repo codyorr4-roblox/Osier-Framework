@@ -79,7 +79,7 @@ end)
 -- require the Client module
 local client  = require(script.Parent)
 
--- wait for the server to initiate and for the client to start.
+-- wait for the server and client to start.
 client:WaitForStart()
 
 -- print some data replicated from the server
