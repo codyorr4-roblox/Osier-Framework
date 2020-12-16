@@ -26,7 +26,7 @@ _dont forget to report bugs or to provide feedback_
 # Getting Started
 
 
-## Initiating the server
+## Starting the Server
 ### Add a Server Script into the _Server Module_ (or anywhere really)
 
 ```lua
@@ -54,7 +54,25 @@ server:Start({
 })
 ```
 
-## Initiating the Client
+## using the Server
+### Add a Server Script into the _Server Module_ (or anywhere really)
+
+```lua
+-- require the Server module.
+local server = require(script.Parent)
+
+-- wait for the server to start
+server:WaitForStart()
+
+-- do what you gotta do after server starts
+server:HandleEvent("Sell", 1, function(player, data)
+    server:UpdateValue(player, "Coins", function(oldValue)
+    	return oldValue+100
+    end)
+end)
+```
+
+## Using the Client
 ### Add a Local Script into the _Client Module_ (or anywhere really)
 
 ```lua
