@@ -29,7 +29,7 @@ _dont forget to report bugs or to provide feedback_
 
 
 ## Starting the Server
-### Add a Server Script as a child of the _Server Module_ (or anywhere really)
+### Add a Server Script as a child of the _Server Module_
 
 ```lua
 -- require the Server module.
@@ -57,7 +57,7 @@ server:Start({
 ```
 
 ## Using the Server
-### Add another Server Script as a child of the _Server Module_ (or anywhere really)
+### Add another Server Script as a child of the _Server Module_
 
 ```lua
 -- require the Server module.
@@ -76,7 +76,7 @@ end)
 ```
 
 ## Using the Client
-### Add a Local Script as a child of the _Client Module_ (or anywhere really)
+### Add a Local Script as a child of the _Client Module_
 
 ```lua
 -- require the Client module
