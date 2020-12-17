@@ -1,6 +1,8 @@
 # Osier-Framework
 A very small framework used to simplify Initiation, Datastores and Remotes.
 
+[ree](https://devforum.roblox.com/t/osier-framework-simplified-datastores-and-remotes-for-simplified-projects/927569)
+
 _dont forget to report bugs or to provide feedback_
 
 # Why use the osier framework?
