@@ -9,7 +9,7 @@ local server = {
 	PlayerRemoving = {}
 }
 
-local canStart=true
+local canStart = true
 local started = false
 local defaultData 
 local sessionData = {}
