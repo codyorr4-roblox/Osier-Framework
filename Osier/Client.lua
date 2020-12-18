@@ -4,22 +4,6 @@ local client = {}
 
 client.Data = {}
 
---key events
-client.KeyPressed = {}
-client.KeyReleased = {}
-client.KeyHeld = {}
-
---mouse events
-client.MouseDown = {}
-client.MouseUp = {}
-client.MouseClick = {}
-client.MouseHeld = {}
-client.MouseMove = {}
-
---gui events
-client.ButtonPressed = {}
-client.ButtonUp = {}
-
 local player = game.Players.LocalPlayer
 local canStart = true 
 local started = false
