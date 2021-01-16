@@ -16,10 +16,8 @@ _dont forget to report bugs or to provide feedback_
 * Player Data Loading, Caching and Autosaving are handled automatically, you just provide Default Data for new players
 * Player Data is replicated automatically to the client.
 * Session Locking is implemented.
-* Optimized Backups **[unfinished: waiting for roblox to release the backup system.]**
 * Osier doesn't use network request everytime you want to get/update a value from datastores. (because it caches the players data when they join)
 * Reset data, add data or remove data easily. (Default data and players data will be reconciled upon joining)
-* Add core leaderstats and/or custom leaderboards that automatically update when you change players data. **[unfinished]**
 * Remotes are more convenient to setup and faster to use.
 
 
