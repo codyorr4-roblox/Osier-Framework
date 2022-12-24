@@ -26,76 +26,71 @@ _dont forget to report bugs or to provide feedback_
 # Getting Started
 
 
-## Starting the Server
+## Using the Server
 ### Add a Server Script as a child of the _Server Module_
 
 ```lua
--- require the Server module.
-local server = require(script.Parent)
+-- Require the server and cache any modules needed.
+local server= require(script.Parent.Parent)
+local remote = server.Remote
+local playerData = server.PlayerData
 
--- connect to the custom player added event (or utilize :WaitForClient(player) in the normal player added event)
-server.PlayerAdded:Connect(function(player,data)
-    -- print the players 'Coins' value
-    print("Server Coins: "..server:GetValue(player,"Coins"))
+
+-- Only the server can register remotes.
+remote:Create("Test", false) 
+
+
+-- Handle a signal for a registered remote.
+remote:Handle("Test", 2000, function(player,data, data2)
+	-- Print received data.
+	print(data);
+	print(data2)
 	
-    -- fire a remote event handled by the players client.
-    server:Fire(player, "LocalTest")
+	
+	-- Get a value from the players session data. EX: their "Coins" value.
+	playerData:Get(player, "Coins")
+	
+	
+	-- Update a players session data. EX: giving the player 20 Coins.
+	playerData:Update(player, "Coins", function(old) 
+		return old + 20.
+	end)
+	
 end)
 
 
--- handle a remote event on the server
-server:HandleEvent("Test", 0 , function(player, data)
-    print("SERVER TEST EVENT FIRED")
-end)
-
--- start the server and provide DefaultData for the players datastores.
-server:Start({
-    Coins = 0
-})
+-- Start the player data module.
+playerData:Start(
+	
+	--First argument is a template for new players' data.
+	{	
+		Coins = 0;
+		Inventory = {}
+	},
+	
+	--Second argument is a table that specifies which values can be replicated.
+	{
+		Coins = true;
+	}
+)
 ```
 
-## Using the Server
-### Add another Server Script as a child of the _Server Module_
-
-```lua
--- require the Server module.
-local server = require(script.Parent)
-
--- wait for the server to start
-server:WaitForStart()
-
--- do what you gotta do after server starts
-server:HandleEvent("Sell", 1, function(player, data)
-    -- update the players 'Coins' value. it'll be autosaved. (it'll also save when they leave or if the server closes)
-    server:UpdateValue(player, "Coins", function(oldValue)
-    	return oldValue+100
-    end)
-end)
-```
 
 ## Using the Client
 ### Add a Local Script as a child of the _Client Module_
 
 ```lua
--- require the Client module
-local client  = require(script.Parent)
+-- Require the Client module and cache any other modules needed.
+local client = require(script.Parent.Parent)
+local remote = client.Remote
+local playerData = client.PlayerData
 
--- wait for the server and client to start.
-client:WaitForStart()
 
--- print some data replicated from the server
-print("Local Coins: "..client.Data.Coins)
+-- Locally fire a remote that was registered by the server.
+remote:FireServer("Test", "Hello from the client!", "Here is a second value")
 
--- fire a remote event that is handled by the server
-client:Fire("Test")
 
--- handle a remote event on the client.
-client:HandleEvent("LocalTest", 0,function(data)
-    print("LOCAL TEST EVENT FIRED")
-end)
-
--- check to see if certain data changes
-client.DataChanged("Coins"):Connect(function(value)
-    print("LOCAL COINS CHANGED TO: "..value)
-end)
+-- Locally print a replicated session data value.
+-- The servers playerData:Start() function has arguments for replicating saved values.
+print(remote:Get("Coins"))
 ```
