@@ -95,7 +95,7 @@ local playerData = client.PlayerData
 
 -- Locally print a replicated session data value.
 -- The servers playerData:Start() function has arguments for replicating saved values.
-print(remote:Get("Coins"))
+print(playerData:Get("Coins"))
 
 
 -- Locally invoke a remoteFunction that was registered by the server, it will yield and return values.
@@ -103,5 +103,5 @@ print(remote:RequestAsync("Test", "Hello from the client!", "Here is a second va
 
 
 -- Check the replicated values again and see if the change replicated.
-print(remote:Get("Coins"))
+print(playerData:Get("Coins"))
 ```
