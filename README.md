@@ -41,13 +41,13 @@ playerData:Start(
 	
 	--First argument is a template for new players' data.
 	{	
-		Coins = 0;
+		Coins = 0,
 		Inventory = {}
 	},
 	
 	--Second argument is a table that specifies which values can be replicated.
 	{
-		Coins = true;
+		Coins = true
 	}
 )
 
@@ -61,7 +61,7 @@ remote:Create("Test", true)
 -- Handle a signal for a registered remote.
 remote:Handle("Test", 2000, function(player,data, data2)
 	-- Print received data.
-	print(data);
+	print(data)
 	print(data2)
 	
 	
@@ -71,7 +71,7 @@ remote:Handle("Test", 2000, function(player,data, data2)
 	
 	-- Update a players session data. EX: giving the player 20 Coins.
 	playerData:Update(player, "Coins", function(old) 
-		return old + 20.
+		return old + 20
 	end)
 	
 	-- Check to see if the value changed
